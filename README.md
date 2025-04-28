@@ -1,71 +1,52 @@
 # UTS-KecerdasanBuatan
 
-Sistem Pakar Diagnosa Tanaman
+
+Sistem Pakar Identifikasi Hama Tanaman
 Deskripsi
-Sistem pakar ini dirancang untuk membantu mendiagnosa hama atau penyakit pada tanaman berdasarkan gejala yang terdeteksi. Sistem menggunakan aturan berbasis logika proposisional untuk mencocokkan kombinasi gejala dengan diagnosis yang sudah ditentukan sebelumnya.
+Sistem ini menggunakan aturan logika sederhana untuk menentukan jenis hama tanaman berdasarkan gejala yang muncul, seperti daun menguning, bercak hitam, daun berlubang, dan tanaman layu.
+Aturan
+•	Daun menguning dan tanaman layu → Hama Aphids
+•	Daun menguning dan bercak hitam → Jamur Daun
+•	Bercak hitam dan daun berlubang → Hama Ulat
+•	Daun berlubang dan tanaman layu → Hama Kumbang
+Cara Kerja
+1.	Input kondisi gejala tanaman.
+2.	Sistem mencocokkan gejala dengan aturan.
+3.	Sistem menampilkan jenis hama atau pesan "perlu pemeriksaan lebih lanjut".
+Contoh Implementasi (Python)
+def identifikasi_hama(daun_menguning, bercak_hitam, daun_berlubang, tanaman_layu):
+    if daun_menguning and tanaman_layu:
+        return "Hama Aphids"
+    elif daun_menguning and bercak_hitam:
+        return "Jamur Daun"
+    elif bercak_hitam and daun_berlubang:
+        return "Hama Ulat"
+    elif daun_berlubang and tanaman_layu:
+        return "Hama Kumbang"
+    else:
+        return "Hama tidak diketahui, perlu pemeriksaan lanjut"
 
-Fitur Sistem
-•	Diagnosa berdasarkan 6 aturan yang ditetapkan.
-•	Input berupa gejala tanaman yang dapat dipilih oleh pengguna.
-•	Proses inferensi otomatis berdasarkan gejala yang dimasukkan.
-•	Hasil diagnosa berupa jenis hama atau penyakit tanaman.
-•	Penanganan kesalahan input (hanya menerima jawaban 'y' atau 'n').
+# Contoh penggunaan
+gejala = {
+    "daun_menguning": True,
+    "bercak_hitam": False,
+    "daun_berlubang": False,
+    "tanaman_layu": True
+}
 
-Langkah Pengerjaan
-1. Penentuan Gejala
-Gejala yang digunakan dalam sistem ini adalah:
-•	Daun Menguning
-•	Terdapat Bercak Hitam
-•	Daun Berlubang
-•	Tanaman Layu
-2. Penyusunan Aturan Diagnosa
-Berdasarkan kombinasi gejala, sistem akan menghasilkan diagnosis sesuai dengan 6 aturan berikut:
-1.	Jika daun menguning dan tanaman layu, maka diagnosis adalah Hama Aphids.
-2.	Jika terdapat bercak hitam dan daun menguning, maka diagnosis adalah Jamur Daun.
-3.	Jika daun berlubang dan terdapat bercak hitam, maka diagnosis adalah Hama Ulat.
-4.	Jika tanaman layu dan daun berlubang, maka diagnosis adalah Hama Kumbang.
-5.	Jika daun menguning saja, maka diagnosis adalah Kekurangan Nutrisi.
-6.	Jika terdapat bercak hitam saja, maka diagnosis adalah Penyakit Bercak Daun.
-3. Penyusunan Algoritma Inferensi
-•	Menggunakan logika proposisional, sistem akan memeriksa kombinasi gejala yang diberikan pengguna.
-•	Berdasarkan kombinasi gejala tersebut, hasil diagnosis akan disampaikan kepada pengguna.
-4. Implementasi Program
-•	Program ini ditulis dalam bahasa Python.
-•	Input gejala diambil dari pengguna menggunakan fungsi input().
-•	Sistem kemudian memeriksa kombinasi gejala menggunakan struktur if-elif-else.
-•	Program akan memberikan hasil diagnosis berdasarkan aturan yang sudah ditentukan.
+hasil = identifikasi_hama(**gejala)
+print("Jenis Hama:", hasil)
+Output
+Jenis Hama: Hama Aphids
 
-Langkah Penggunaan
-1.	Persyaratan Sistem:
-o	Pastikan Python sudah terinstal di sistem Anda. (Disarankan Python versi 3.x)
-2.	Cara Menjalankan Program:
-o	Unduh atau salin kode Python berikut ke dalam file diagnosa_tanaman.py.
-o	Jalankan program menggunakan terminal atau command prompt dengan perintah:
-o	python diagnosa_tanaman.py
-o	Program akan meminta input berupa gejala yang dialami oleh tanaman.
-o	Setelah memasukkan informasi gejala, sistem akan memberikan diagnosis.
-3.	Contoh Penggunaan:
-4.	Apakah daun menguning? (y/n): y
-5.	Apakah terdapat bercak hitam? (y/n): n
-6.	Apakah daun berlubang? (y/n): n
-7.	Apakah tanaman layu? (y/n): y
-8.	Diagnosis: Hama Aphids
 
-Fitur Tambahan:
-•	Penanganan Kesalahan Input: Jika pengguna memasukkan input selain 'y' atau 'n', sistem akan meminta ulang input hingga yang benar dimasukkan.
-•	Pengecekan Diagnosa: Sistem dapat mengidentifikasi berbagai hama atau penyakit tanaman berdasarkan kombinasi gejala yang ada.
+Penulis
+•	Nama: Muhamad Anwar Sanusi
+•	NIM: 2306016
+•	Kelas: Informatika-A
+•	Institusi: Institut Teknologi Garut
+•	Mata Kuliah: Kecerdasan Buatan
+•	Dosen Pengampu: Leni Fitriani, S.T., M.Kom.
 
-Struktur Kode
-diagnosa_tanaman.py
-│
-├── Fungsi get_input()          # Menangani input gejala dengan validasi
-├── Input Gejala                # Pengguna memasukkan informasi gejala
-├── Logika Inferensi            # Proses pengecekan kombinasi gejala
-└── Output Diagnosis            # Menampilkan hasil diagnosis
 
-Kontribusi
-Jika Anda ingin berkontribusi atau melakukan pengembangan lebih lanjut terhadap sistem ini, Anda dapat mengajukan pull request atau memberikan masukan melalui Issues pada repositori ini.
-
-Lisensi
-Proyek ini dilisensikan di bawah lisensi MIT License.
 
